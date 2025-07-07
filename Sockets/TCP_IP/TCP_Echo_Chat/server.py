@@ -45,7 +45,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             if not Data:
 
                 # Print a message indicating that the connection has been closed by the client
-                print(f"[-] Connection closed by client")
+                print("[-] Connection closed by client")
                 
                 # Break the loop to stop receiving data
                 break
