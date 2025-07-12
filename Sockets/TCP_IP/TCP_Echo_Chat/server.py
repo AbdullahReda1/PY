@@ -45,7 +45,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             if not Data:
 
                 # Print a message indicating that the connection has been closed by the client
-                print("[-] Connection closed by client")
+                print("[-] No data sent, may connection closed by client")
                 
                 # Break the loop to stop receiving data
                 break
@@ -53,7 +53,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             # Decode the received data from bytes to a string
             Decoded_Data = Data.decode()
             
-            # Print the received data from the client to the console, if the data is available.
+            # Check if the client is requesting to close the connection
+            if Decoded_Data.lower() == "connection closed by client":
+                
+                # Print a message indicating that the client has requested to close the connection
+                print("[-] Client requested to close the connection.")
+                
+                # Exit the loop gracefully without echoing the message back
+                break
+            
+            # Otherwise: Print the received data from the client to the console, if the data is available.
             print(f"[Client]: {Decoded_Data}")
 
             # Send the received data back to the client (echo)
