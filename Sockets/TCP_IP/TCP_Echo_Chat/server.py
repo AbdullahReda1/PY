@@ -1,6 +1,10 @@
 # Import the socket library for network communication
 import socket
 
+# Import the datetime module to get the current date and time
+from datetime import datetime
+
+
 # Returns the hostname of your local machine as a string.
 # Then takes that hostname and resolves it to an IP address.
 HOST = socket.gethostbyname(socket.gethostname())
@@ -21,7 +25,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
     server_socket.listen()
 
     # Print the server's address and port to the console
-    print(f"[+] Server listening on {HOST}:{PORT}")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Server listening on {HOST}:{PORT}")
 
     """
         Accept a connection from a client, Note: That conn is a new socket object that is used to communicate with the client,
@@ -33,7 +37,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
     with conn:
         
         # Print the address of the connected client to the console which is a tuple containing the IP address and port number.
-        print(f"[+] Connected by {addr}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Connected by {addr}")
 
         # Loop to continuously receive data from the client
         while True:
@@ -45,7 +49,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             if not Data:
 
                 # Print a message indicating that the connection has been closed by the client
-                print("[-] No data sent, may connection closed by client")
+                print(f"[{datetime.now().strftime('%H:%M:%S')}] [-] No data sent, may connection closed by client")
                 
                 # Break the loop to stop receiving data
                 break
@@ -57,13 +61,19 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             if Decoded_Data.lower() == "connection closed by client":
                 
                 # Print a message indicating that the client has requested to close the connection
-                print("[-] Client requested to close the connection.")
+                print(f"[{datetime.now().strftime('%H:%M:%S')}] [-] Client requested to close the connection.")
+                
+                # Print a message indicating that the server is closing the connection
+                print(f"[{datetime.now().strftime('%H:%M:%S')}] [!] Closing server socket...")
+                
+                # Close the server socket to free up the port
+                server_socket.close()
                 
                 # Exit the loop gracefully without echoing the message back
                 break
             
             # Otherwise: Print the received data from the client to the console, if the data is available.
-            print(f"[Client]: {Decoded_Data}")
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [Client]: {Decoded_Data}")
 
             # Send the received data back to the client (echo)
             conn.sendall(Data)

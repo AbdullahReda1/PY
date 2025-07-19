@@ -1,6 +1,10 @@
 # Import the socket library for network communication
 import socket
 
+# Import the datetime module to get the current date and time
+from datetime import datetime
+
+
 # Returns the hostname of your local machine as a string
 # Then takes that hostname and resolves it to an IP address
 HOST = socket.gethostbyname(socket.gethostname())
@@ -18,13 +22,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     client_socket.connect((HOST, PORT))
     
     # Print the Connected server's address and port to the console
-    print(f"[+] Connected to server at {HOST}:{PORT}")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Connected to server at {HOST}:{PORT}")
     
     # Loop to continuously send and receive data from the server
     while True:
         
         # Give the user the ability to close the connection by typing 'exit' word
-        print("[*] Type 'exit' to close the connection.")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [*] Type 'exit' to close the connection.")
         
         # Prompt the user for input to send to the server
         message = input("You: ")
@@ -36,7 +40,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
             client_socket.sendall("Connection closed by client".encode())
             
             # Print a message indicating that the client is exiting
-            print("[!] Exiting...")
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [!] Exiting...")
+            
+            # Close the client socket
+            client_socket.close()
             
             # Break the loop to stop sending data
             break
@@ -57,13 +64,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
             Decoded_Data = Data.decode()
 
             # Print the received data from the server to the console, if the data is available
-            print(f"[Server]: {Decoded_Data}")
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [Server]: {Decoded_Data}")
 
         # If no data is received
         else:
             
             # Print a message indicating that no data was received from the server
-            print("[-] No data received from server, connection may be closed.")
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [-] No data received from server, connection may be closed.")
             
             # Then break the loop to stop receiving data
             break
