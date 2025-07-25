@@ -54,7 +54,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 # Break the loop to stop receiving data
                 break
 
-            # Decode the received data from bytes to a string
+            # Decode the received data from byte object to a string
             Decoded_Data = Data.decode()
             
             # Check if the client is requesting to close the connection
@@ -72,8 +72,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 # Exit the loop gracefully without echoing the message back
                 break
             
-            # Otherwise: Print the received data from the client to the console, if the data is available.
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] [Client]: {Decoded_Data}")
+            # Otherwise: Print the received data from the client to the console, if the data is available
+            # This includes the decoded message, its hexadecimal representation, binary representation, and length in bytes
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [Client]: {Decoded_Data}, [Hex]: {Data.hex()}\n\t   [Binary]: {' '.join(format(byte, '08b') for byte in Data)}, [Length]: {len(Data)} bytes")
 
             # Send the received data back to the client (echo)
             connection.sendall(Data)

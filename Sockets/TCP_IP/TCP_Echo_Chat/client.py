@@ -24,11 +24,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     # Print the Connected server's address and port to the console
     print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Connected to server at {HOST}:{PORT}")
     
+    # Give the user the ability to close the connection by typing 'exit' word
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] [*] Type 'exit' to close the connection.")
+    
     # Loop to continuously send and receive data from the server
     while True:
-        
-        # Give the user the ability to close the connection by typing 'exit' word
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] [*] Type 'exit' to close the connection.")
         
         # Prompt the user for input to send to the server
         message = input("You: ")
@@ -64,7 +64,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
             Decoded_Data = Data.decode()
 
             # Print the received data from the server to the console, if the data is available
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] [Server]: {Decoded_Data}")
+            # This includes the decoded message, its hexadecimal representation, binary representation, and length in bytes
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [Server]: {Decoded_Data}, [Hex]: {Data.hex()}\n\t   [Binary]: {' '.join(format(byte, '08b') for byte in Data)}, [Length]: {len(Data)} bytes")
 
         # If no data is received
         else:
