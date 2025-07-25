@@ -28,22 +28,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
     print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Server listening on {HOST}:{PORT}")
 
     """
-        Accept a connection from a client, Note: That conn is a new socket object that is used to communicate with the client,
-        and addr is the address of the client containing the IP address and port number.
+        Accept a connection from a client, Note: That connection is a new socket object that is used to communicate with the client,
+        and address is the address of the client containing the IP address and port number.
     """
-    conn, addr = server_socket.accept()
+    connection, address = server_socket.accept()
 
     # Use the accepted connection to receive and send data
-    with conn:
+    with connection:
         
         # Print the address of the connected client to the console which is a tuple containing the IP address and port number.
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Connected by {addr}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [+] Connected by {address}")
 
         # Loop to continuously receive data from the client
         while True:
 
-            # Receive data from the client, Note: That conn.recv() is a blocking call that waits for data to be received.
-            Data = conn.recv(BUFFER_SIZE)
+            # Receive data from the client, Note: That connection.recv() is a blocking call that waits for data to be received.
+            Data = connection.recv(BUFFER_SIZE)
 
             # If no data is received, it means the client has closed the connection
             if not Data:
@@ -76,4 +76,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
             print(f"[{datetime.now().strftime('%H:%M:%S')}] [Client]: {Decoded_Data}")
 
             # Send the received data back to the client (echo)
-            conn.sendall(Data)
+            connection.sendall(Data)
