@@ -1,4 +1,6 @@
 # 1	    capitalize():   Converts the first character to upper case.
+cap_txt = "hi there"
+print(cap_txt.capitalize())
 
 # 2	    casefold():     Converts string into lower case.
 
@@ -87,3 +89,5 @@
 # 44	upper():        Converts a string into upper case.
 
 # 45	zfill():        Fills the string with a specified number of 0 values at the beginning.
+
+
