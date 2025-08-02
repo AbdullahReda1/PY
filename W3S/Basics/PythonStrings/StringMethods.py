@@ -1,10 +1,14 @@
 # 1	    capitalize():   Converts the first character to upper case.
-cap_txt = "hi there"
-print(cap_txt.capitalize())
+txt = "hi there"
+print(txt.capitalize())     #! Output: Hi there
 
 # 2	    casefold():     Converts string into lower case.
+txt = "HI THERE"
+print(txt.casefold())       #! Output: hi there
 
 # 3	    center():       Returns a centered string.
+txt = "here centered string"
+print(txt.center(50, '*'))      #! Output: *****************here centered string*****************
 
 # 4	    count():        Returns the number of times a specified value occurs in a string.
 
