@@ -11,6 +11,8 @@ txt = "here centered string"
 print(txt.center(50, '*'))      #! Output: *****************here centered string*****************
 
 # 4	    count():        Returns the number of times a specified value occurs in a string.
+txt = "abbcccddddeeeee"
+print(txt.count('e'))
 
 # 5	    encode():       Returns an encoded version of the string.
 
