@@ -12,9 +12,11 @@ print(txt.center(50, '*'))      #! Output: *****************here centered string
 
 # 4	    count():        Returns the number of times a specified value occurs in a string.
 txt = "abbcccddddeeeee"
-print(txt.count('e'))
+print(txt.count('e'))       #! Output: 5
 
 # 5	    encode():       Returns an encoded version of the string.
+txt = "HAPPY"
+print(txt.encode())     #! Output: b'HAPPY'
 
 # 6	    endswith():     Returns true if the string ends with the specified value.
 
