@@ -17,6 +17,7 @@ print(txt.count('e'))       #! Output: 5
 # 5	    encode():       Returns an encoded version of the string.
 txt = "HAPPY"
 print(txt.encode())     #! Output: b'HAPPY'
+print(txt.encode().hex())     #! Output: 4841505059
 
 # 6	    endswith():     Returns true if the string ends with the specified value.
 
