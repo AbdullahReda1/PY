@@ -1,5 +1,5 @@
 # ============================================================
-# PYTHON SETS — COMPLETE W3SCHOOLS SUMMARY + CODE EXAMPLES
+# PYTHON SETS TUTORIAL
 # ============================================================
 # Characteristics:
 # - Unordered, unindexed
