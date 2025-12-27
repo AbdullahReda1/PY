@@ -5,6 +5,7 @@
 
 # Python If
 # Executes a block of code if the condition is True
+# sourcery skip: remove-redundant-pass
 x = 10
 if x > 5:
     print("x is greater than 5")
@@ -71,4 +72,5 @@ else:
 value = 5
 
 if value > 0:
-    pass # To be implemented later
+    print("The pass keyword works now...")
+    pass
