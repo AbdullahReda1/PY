@@ -1,0 +1,110 @@
+==========================================
+Python Virtual Environment (venv)
+==========================================
+
+
+------------------------------------------------
+What is a Virtual Environment?
+A virtual environment is an isolated environment
+for Python projects with its own dependencies
+------------------------------------------------
+
+
+------------------------------------------------
+Why Use Virtual Environments?
+------------------------------------------------
+- Avoid package conflicts between projects
+- Keep dependencies isolated
+- Control package versions
+- Make projects reproducible
+
+
+------------------------------------------------
+Create Virtual Environment
+------------------------------------------------
+python -m venv env_name
+
+Example:
+python -m venv venv
+
+
+------------------------------------------------
+Activate Virtual Environment
+------------------------------------------------
+
+# Windows
+venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
+
+
+------------------------------------------------
+Deactivate Virtual Environment
+------------------------------------------------
+deactivate
+
+
+------------------------------------------------
+Check Installed Packages (inside venv)
+------------------------------------------------
+pip list
+
+
+------------------------------------------------
+Install Packages in venv
+------------------------------------------------
+pip install package_name
+
+
+------------------------------------------------
+Create requirements.txt
+------------------------------------------------
+pip freeze > requirements.txt
+
+
+------------------------------------------------
+Install from requirements.txt
+------------------------------------------------
+pip install -r requirements.txt
+
+
+------------------------------------------------
+Delete Virtual Environment
+------------------------------------------------
+# Simply delete the folder
+rm -rf venv        (Linux/macOS)
+rmdir /s venv      (Windows)
+
+
+------------------------------------------------
+Project Structure Example
+------------------------------------------------
+project/
+│── venv/
+│── main.py
+│── requirements.txt
+
+
+------------------------------------------------
+Best Practices
+------------------------------------------------
+- Always use venv per project
+- Do NOT upload venv folder to Git
+- Use requirements.txt
+- Activate before installing packages
+
+
+------------------------------------------------
+Check Active Environment
+------------------------------------------------
+which python   (Linux/macOS)
+where python   (Windows)
+
+
+------------------------------------------------
+Common Mistakes
+------------------------------------------------
+- Installing globally instead of venv
+- Forgetting to activate environment
+- Not saving dependencies
