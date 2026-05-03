@@ -81,10 +81,10 @@ calc.show_square(5)
 # You can use any name, but 'self' is standard
 # ------------------------------------------------
 class Demo:
-    def __init__(this, value):
+    def __init__(this, value):  # sourcery skip: instance-method-first-arg-name
         this.value = value
 
-    def show(this):
+    def show(this):  # sourcery skip: instance-method-first-arg-name
         print(this.value)
 
 d = Demo(10)
